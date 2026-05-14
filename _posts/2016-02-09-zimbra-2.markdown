@@ -1,0 +1,185 @@
+---
+layout: post
+title:  "Creando un sistema de correo profesional con Zimbra (2/2): Configuración"
+date:    2016-02-09 00:00:00 +0200
+tags: zimbra
+---
+
+Como ya vimos en el anterior post de esta serie, [Creando un sistema de correo profesional con Zimbra]({% post_url 2016-01-21-zimbra-1%}), ya tenemos nuestro Zimbra funcionando, pero con la instalación básica no conseguimos que sea tan profesional como nuestro título pretende que sea :p
+
+Por lo tanto, vamos a realizar una serie de configuraciones, no solo a nivel de Zimbra, que nos ayudarán para conseguir éste propósito, así que vamos a por ello.
+
+## Comprobaciones DNS
+
+Los sistemas de correo electrónico basan mucha de su seguridad en cómo está la configuración DNS, como por ejemplo la utilización de **[listas negras (RBL)](https://en.wikipedia.org/wiki/DNSBL)**, la resolución **[FQDN](https://es.wikipedia.org/wiki/FQDN)**, si se cuenta con configuración **[SPF](https://es.wikipedia.org/wiki/Sender_Policy_Framework)** … Por lo tanto, vamos a hacer que nuestro Zimbra realice estas comprobaciones.
+
+### Listas negras (RBL)
+
+Las listas negras es un intento de parar el spam en la jungla que es hoy día internet. Básicamente su funcionamiento es el de realizar un listado de IPs que son marcadas como spammers debido a distintos criterios. Para la configuración iremos a la consola de administración de nuestro servidor Zimbra, yendo a través del navegador web a la dirección https://\[SERVER\]:7071 , donde SERVER es la IP o la resolución DNS de nuestro servidor
+
+En nuestro apartado de administración de Zimbra iremos a **Configurar → Configuración General →MTA** y aquí bajaremos a la sección **Comprobaciones DNS**, donde añadiremos las siguientes listas negras por cada una de las secciones que vemos.
+
+- **Lista RBL**:
+  - zen.spamhaus.org
+  - bl.spamcop.net
+  - psbl.surriel.com
+- **Lista de RHSBL del cliente**:
+  - dbl.spamhaus.org
+  - multi.surbl.org
+- **Lista de RHSBL del remitente**:
+  - multi.surbl.org
+
+Con esto ya tenemos varias listas configuradas para que la detección de emisores de spam sea mejor y haya mails que sean rechazados automáticamente.
+
+### Modificación DNS primario de Zimbra
+
+Como os acordaréis, en el primer post utilizamos un servidor temporal de DNS para la instalación. Dado que es temporal, tenemos que quitarlo de la configuración de Zimbra y añadir un DNS primario real. Para comprobar el DNS primario que usa:
+
+    zimbra@mail:~$ zmprov gs `zmhostname` zimbraDNSMasterIP
+    # name mail.irontec.com
+    zimbraDNSMasterIP: 192.168.90.1
+
+Por lo tanto, tenemos que modificarlo para que use un servidor real y en producción. Vamos utilizar el de Google:
+
+    zimbra@mail:~$ zmprov ms `zmhostname` -zimbraDNSMasterIP 192.168.90.1
+
+    zimbra@mail:~$ zmprov ms `zmhostname` +zimbraDNSMasterIP  8.8.8.8
+
+    zimbra@mail:~$ zmprov gs `zmhostname` zimbraDNSMasterIP
+    # name mail.irontec.com
+    zimbraDNSMasterIP: 8.8.8.8
+
+## SPF
+
+Para la comunicación entre servidores de correo es muy habitual la utilización de **[SPF](https://es.wikipedia.org/wiki/Sender_Policy_Framework)**. Este sistema lo que hace es tener en cuenta los registros **DNS** de nuestro dominio para asegurar que el emisor de un correo electrónico **está autorizado para ello**.
+
+![zimbra](/assets/images/1200px-Zimbra-spf.png)
+
+Es decir, si alguien intenta mandar un mail utilizando nuestro dominio **_irontec.com_** el servidor de correo receptor debería realizar una comprobación de si el emisor está permitido para poder mandar mails en nuestro nombre. En caso de que el emisor no esté autorizado, el servidor receptor debería rechazar el mail ya que no está autorizado para poder mandar mails **en nuestro nombre**_._
+
+Para realizar esta configuración **deberemos crear un registro nuevo de tipo TXT** en nuestro servidor **DNS**. Normalmente tendremos el servidor DNS en un proveedor que nos facilitará esta tarea mediante un panel de control.
+
+El formato del registro TXT debe ser:  **v=spf1 a mx a:www2.irontec.com ip4:123.4.5.6  -all**
+
+La explicación del formato es sencilla, primero indicamos **v=spf1** para indicar que se trata de un registro SPF, y posteriormente quiénes están autorizados a poder mandar mails en el que está configurado. En el caso de este ejemplo:
+
+- **v=spf1**   : Indica que el registro TXT es para la comprobación SPF
+- **a**   : indica que el servidor con registro **A** está autorizado
+- **mx** : indica que el servidor con registro **MX** de nuestro dominio irontec.com también está autorizado
+- **a:www2.irontec.com** : El servidor cuya IP coincide con el registro **A** del dominio _www2.irontec.com_  está autorizado
+- **ip4:123.4.5.6** : El servidor con IP 123.4.5.6 está autorizado
+- **-all** : Tal como veis en la siguiente tabla, con esto indicamos que el resto de servidores no están autorizados salvo que coincidan con las reglas anteriores
+
+| **Parámetro** | **Resultado** | **Significado** |
+| --- | --- | --- |
+| +all |  pass |  Permite todo los mails, como si no hubiese nada configurado (No recomendable) |
+| \-all |  fail |  Todos los servidores que no coincidan con las reglas anteriores no están permitidos para mandar mails. |
+| ~all |  softfail |  Permite mandar mails, pero si algo va mal será marcado como «softfail». |
+
+## DKIM
+
+El método **[DKIM (DomainKeys Identified Mail)](https://es.wikipedia.org/wiki/DomainKeys_Identified_Mail)** sirve para asociar el nombre del dominio y el email, permitiendo a una persona asumir la responsabilidad de un email.
+
+![zimbra-dkim](/assets/images/Zimbra-dkim.png)
+
+Básicamente el sistema DKIM lo que hace es que **el servidor emisor firma los mails de salida**, y el servidor receptor del correo realiza una comprobación DNS para **asegurar que el mail firmado es válido contra la clave pública** añadida como registro DNS.
+
+Para ello, desde la consola de nuestro servidor Zimbra ejecutaremos, como usuario zimbra, el siguiente comando:
+
+    root@mail:~# su - zimbra
+
+    zimbra@mail:~$ /opt/zimbra/libexec/zmdkimkeyutil -a -d irontec.com
+    DKIM Data added to LDAP for domain irontec.com with selector 0F12345-C5DB-35E1-134A-7EEE12C2BA47
+    Public signature to enter into DNS:
+    0F12345-C5DB-35E1-134A-7EEE12C2BA47._domainkey IN      TXT     ( "v=DKIM1; k=rsa; "
+                        "p=M1234567890GC123456789Ib3DQEBAQU123456789BiQKBgQCyyhoer123456789ts4/oj064WpCi+wPo0gvWwhS12345678927yAbHy9+V3gt123456789jOBz123456789m0DE1jheVY3KqB4u/OGU123456789d4tid123456789YeJKQhSbLFjZe/IZq123456789XDNLLEQIDAQAB" )  ; ----- DKIM key 0F12345-C5DB-35E1-134A-7EEE12C2BA47 for irontec.com
+
+Ya hemos generado la clave, y lo que nos ha sacado como resultado del comando es la clave pública que ahora tendremos que añadir en nuestro DNS. Si os fijáis en la salida del comando, nos pone «**Public signature to enter into DNS**«, es decir, tenemos que crear un registro de tipo **TXT** como, como dominio que sea **0F12345-C5DB-35E1-134A-7EEE12C2BA47._domainkey**.irontec.com y que el valor que contenga sea lo que nos ha sacado el comando:
+
+    v=DKIM1; k=rsa; p=M1234567890GC123456789Ib3DQEBAQU123456789BiQKBgQCyyhoer123456789ts4/oj064WpCi+wPo0gvWwhS12345678927yAbHy9+V3gt123456789jOBz123456789m0DE1jheVY3KqB4u/OGU123456789d4tid123456789YeJKQhSbLFjZe/IZq123456789XDNLLEQIDAQAB
+
+## Limitar tamaño del LDAP interno
+
+Zimbra hace uso de un servidor LDAP interno para el almacenamiento de información, pero que por defecto está configurado para que su almacenamiento llegue hasta los 80GB. Vamos a limitarlo para que no sea tanto, parando primero zimbra:
+
+    root@mail:# su - zimbra
+
+    zimbra@mail:~$ zmcontrol stop
+    Host mail.irontec.com
+            Stopping vmware-ha...skipped.
+    [...]
+
+    zimbra@mail:~$ zmlocalconfig -e ldap\_db\_maxsize=67108864
+
+    zimbra@mail:~$ zmlocalconfig -e ldap\_accesslog\_maxsize=536870912
+
+    zimbra@mail:~$ zmcontrol start
+    Host mail.irontec.com
+            Starting ldap...Done.
+    [...]
+
+## Certificado SSL
+
+No voy a profundizar en este apartado, ya que en este blog ya hemos hablado de qué son los certificados SSL realmente seguros (SHA-2) y cómo crearlos para Zimbra. Por lo tanto utilizo éste apartado a modo de recordatorio para que no os olvidéis de generar vuestro certificado e instalarlo en Zimbra.
+
+Aparte de la generación del certificado, para que nuestra instalación tenga la mayor puntuación de securización en el [SSL Labs test](https://www.ssllabs.com/ssltest/) tenemos que hacer una pequeña modificación en nuestra instalación de Zimbra. Ejecutaremos:
+
+    root@mail:~# cd /opt/zimbra/conf
+
+    root@mail:/opt/zimbra/conf# openssl dhparam -out dhparams.pem 2048
+    Generating DH parameters, 2048 bit long safe prime, generator 2
+    This is going to take a long time
+    [...]
+
+    root@mail:/opt/zimbra/conf# chown zimbra:zimbra dhparams.pem
+
+Ahora tenemos que editar los ficheros **/opt/zimbra/conf/nginx/templates/nginx.conf.web.https.default.template** y **/opt/zimbra/conf/nginx/templates/nginx.conf.web.https.template** (tendremos que modificar los permisos de escritura), y nos aseguramos que aparezcan las siguientes 4 nuevas líneas:
+
+    server
+    {
+    [...]
+
+        ssl_dhparam             /opt/zimbra/conf/dhparams.pem;
+        add_header              Strict-Transport-Security "max-age=31536000; includeSubdomains;";
+        ssl_session_cache       shared:SSL:50m;
+        ssl_session_timeout     5m;
+        include                 ${core.includes}/${core.cprefix}.web.https.mode-${web.mailmode};
+
+    [...]
+
+Y por último, realizaremos la modificación de los tipos de cifrado que nuestro servidor utilizará para comunicarse a través del navegador web:
+
+    zimbra@mail:~$ zmprov mcf zimbraReverseProxySSLCiphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128:AES256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4'
+
+
+    zimbra@mail:~$ zmproxyctl restart
+    Stopping nginx...done.
+    Starting nginx...done.
+
+Si ahora comprobamos nuestro dominio, ya tendremos la máxima puntuación:
+
+![ssl-test](/assets/images/SSL-test.png){: .w-75 .border}
+
+## Configuraciones extra
+
+En este apartado vamos a explicar ciertas configuraciones extra, que aunque no son necesarias, probablemente en algún momento lleguemos a realizarlas, y que siempre viene bien tenerlas en cuenta.
+
+### Tamaño de adjuntos
+
+Zimbra por defecto limita el tamaño de los adjuntos a **10000KB**, que en algunos casos puede ser un poco limitado. Si queremos modificar este tamaño deberemos ir a **Configurar → Configuración General →MTA** y modificar el apartado «**Tamaño máximo del mensaje**«. Al modificar este tamaño, también deberemos modificar el de «**Tamaño máximo de un archivo cargado desde el escritorio**» cuya directiva se encuentra en **Configurar → Configuración General → Información General**
+
+### Clase de servicio
+
+Las **clase de servicio**, o **COS** a partir de ahora, es una manera sencilla de realizar la configuración de características a las cuentas de forma sencilla. Como ejemplo, si queremos limitar a varias cuentas para que el tamaño de su buzón sea de 1GB (en lugar de ilimitado), podemos crear un COS nuevo llamado **limitado** y en el apartado **avanzado** modificar la opción «**espacio de almacenamiento disponible para la cuenta (MB)**» y limitarlo a 1024.
+
+Podremos editar las cuentas y modificar su «**Configuración de cuenta**» y lo dejaríamos así:
+
+![cos](/assets/images/cos-limitado.png)
+
+Por supuesto, la limitación del tamaño del buzón sólo es una muestra de todo lo que se puede realizar. Podemos limitar para que no haya acceso POP, que la cuenta no pueda tener maletín, el acceso a ciertos zimlets…
+
+## Conclusión
+
+Tras estos pasos ya podemos decir que **tenemos un sistema de correo profesional utilizando Zimbra**, que puede ser puesto en producción y utilizado por nuestros usuarios. Hay que tener en cuenta que existen muchas más posibilidades de configuración, y que éstas deberían ser las mínimas a tener en cuenta. Iremos actualizando este post con configuraciones y mejoras extra cada cierto tiempo.
+
+¡Dejadnos un comentario con las **configuraciones imprescindibles que hacéis vosotros** para mejorar este post!

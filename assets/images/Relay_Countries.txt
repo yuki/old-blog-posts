@@ -1,0 +1,975 @@
+header          RELAYCOUNTRY_AD    X-Relay-Countries =~/\bAD\b/
+describe        RELAYCOUNTRY_AD    Relayed through Andorra
+score           RELAYCOUNTRY_AD    1.0
+
+header          RELAYCOUNTRY_AE    X-Relay-Countries =~/\bAE\b/
+describe        RELAYCOUNTRY_AE    Relayed through United Arab Emirates
+score           RELAYCOUNTRY_AE    3.0
+
+header          RELAYCOUNTRY_AF    X-Relay-Countries =~/\bAF\b/
+describe        RELAYCOUNTRY_AF    Relayed through Afghanistan
+score           RELAYCOUNTRY_AF    3.0
+
+header          RELAYCOUNTRY_AG    X-Relay-Countries =~/\bAG\b/
+describe        RELAYCOUNTRY_AG    Relayed through Antigua and Barbuda
+score           RELAYCOUNTRY_AG    3.0
+
+header          RELAYCOUNTRY_AI    X-Relay-Countries =~/\bAI\b/
+describe        RELAYCOUNTRY_AI    Relayed through Anguilla
+score           RELAYCOUNTRY_AI    3.0
+
+header          RELAYCOUNTRY_AL    X-Relay-Countries =~/\bAL\b/
+describe        RELAYCOUNTRY_AL    Relayed through Albania
+score           RELAYCOUNTRY_AL    3.0
+
+header          RELAYCOUNTRY_AM    X-Relay-Countries =~/\bAM\b/
+describe        RELAYCOUNTRY_AM    Relayed through Armenia
+score           RELAYCOUNTRY_AM    3.0
+
+header          RELAYCOUNTRY_AN    X-Relay-Countries =~/\bAN\b/
+describe        RELAYCOUNTRY_AN    Relayed through Netherlands Antilles
+score           RELAYCOUNTRY_AN    3.0
+
+header          RELAYCOUNTRY_AO    X-Relay-Countries =~/\bAO\b/
+describe        RELAYCOUNTRY_AO    Relayed through Angola
+score           RELAYCOUNTRY_AO    3.0
+
+header          RELAYCOUNTRY_AQ    X-Relay-Countries =~/\bAQ\b/
+describe        RELAYCOUNTRY_AQ    Relayed through Antarctica
+score           RELAYCOUNTRY_AQ    3.0
+
+header          RELAYCOUNTRY_AR    X-Relay-Countries =~/\bAR\b/
+describe        RELAYCOUNTRY_AR    Relayed through Argentina
+score           RELAYCOUNTRY_AR    3.0
+
+header          RELAYCOUNTRY_AS    X-Relay-Countries =~/\bAS\b/
+describe        RELAYCOUNTRY_AS    Relayed through American Samoa
+score           RELAYCOUNTRY_AS    3.0
+
+header          RELAYCOUNTRY_AT    X-Relay-Countries =~/\bAT\b/
+describe        RELAYCOUNTRY_AT    Relayed through Austria
+score           RELAYCOUNTRY_AT    3.0
+
+header          RELAYCOUNTRY_AU    X-Relay-Countries =~/\bAU\b/
+describe        RELAYCOUNTRY_AU    Relayed through Australia
+score           RELAYCOUNTRY_AU    3.0
+
+header          RELAYCOUNTRY_AW    X-Relay-Countries =~/\bAW\b/
+describe        RELAYCOUNTRY_AW    Relayed through Aruba
+score           RELAYCOUNTRY_AW    3.0
+
+header          RELAYCOUNTRY_AX    X-Relay-Countries =~/\bAX\b/
+describe        RELAYCOUNTRY_AX    Relayed through Åland Islands
+score           RELAYCOUNTRY_AX    3.0
+
+header          RELAYCOUNTRY_AZ    X-Relay-Countries =~/\bAZ\b/
+describe        RELAYCOUNTRY_AZ    Relayed through Azerbaijan
+score           RELAYCOUNTRY_AZ    3.0
+
+header          RELAYCOUNTRY_BA    X-Relay-Countries =~/\bBA\b/
+describe        RELAYCOUNTRY_BA    Relayed through Bosnia and Herzegovina
+score           RELAYCOUNTRY_BA    3.0
+
+header          RELAYCOUNTRY_BB    X-Relay-Countries =~/\bBB\b/
+describe        RELAYCOUNTRY_BB    Relayed through Barbados
+score           RELAYCOUNTRY_BB    3.0
+
+header          RELAYCOUNTRY_BD    X-Relay-Countries =~/\bBD\b/
+describe        RELAYCOUNTRY_BD    Relayed through Bangladesh
+score           RELAYCOUNTRY_BD    3.0
+
+header          RELAYCOUNTRY_BE    X-Relay-Countries =~/\bBE\b/
+describe        RELAYCOUNTRY_BE    Relayed through Belgium
+score           RELAYCOUNTRY_BE    3.0
+
+header          RELAYCOUNTRY_BF    X-Relay-Countries =~/\bBF\b/
+describe        RELAYCOUNTRY_BF    Relayed through Burkina Faso
+score           RELAYCOUNTRY_BF    3.0
+
+header          RELAYCOUNTRY_BG    X-Relay-Countries =~/\bBG\b/
+describe        RELAYCOUNTRY_BG    Relayed through Bulgaria
+score           RELAYCOUNTRY_BG    3.0
+
+header          RELAYCOUNTRY_BH    X-Relay-Countries =~/\bBH\b/
+describe        RELAYCOUNTRY_BH    Relayed through Bahrain
+score           RELAYCOUNTRY_BH    3.0
+
+header          RELAYCOUNTRY_BI    X-Relay-Countries =~/\bBI\b/
+describe        RELAYCOUNTRY_BI    Relayed through Burundi
+score           RELAYCOUNTRY_BI    3.0
+
+header          RELAYCOUNTRY_BJ    X-Relay-Countries =~/\bBJ\b/
+describe        RELAYCOUNTRY_BJ    Relayed through Benin
+score           RELAYCOUNTRY_BJ    3.0
+
+header          RELAYCOUNTRY_BM    X-Relay-Countries =~/\bBM\b/
+describe        RELAYCOUNTRY_BM    Relayed through Bermuda
+score           RELAYCOUNTRY_BM    3.0
+
+header          RELAYCOUNTRY_BN    X-Relay-Countries =~/\bBN\b/
+describe        RELAYCOUNTRY_BN    Relayed through Brunei Darussalam
+score           RELAYCOUNTRY_BN    3.0
+
+header          RELAYCOUNTRY_BO    X-Relay-Countries =~/\bBO\b/
+describe        RELAYCOUNTRY_BO    Relayed through Bolivia
+score           RELAYCOUNTRY_BO    3.0
+
+header          RELAYCOUNTRY_BR    X-Relay-Countries =~/\bBR\b/
+describe        RELAYCOUNTRY_BR    Relayed through Brazil
+score           RELAYCOUNTRY_BR    3.5
+
+header          RELAYCOUNTRY_BS    X-Relay-Countries =~/\bBS\b/
+describe        RELAYCOUNTRY_BS    Relayed through Bahamas
+score           RELAYCOUNTRY_BS    3.0
+
+header          RELAYCOUNTRY_BT    X-Relay-Countries =~/\bBT\b/
+describe        RELAYCOUNTRY_BT    Relayed through Bhutan
+score           RELAYCOUNTRY_BT    3.0
+
+header          RELAYCOUNTRY_BV    X-Relay-Countries =~/\bBV\b/
+describe        RELAYCOUNTRY_BV    Relayed through Bouvet Island
+score           RELAYCOUNTRY_BV    3.0
+
+header          RELAYCOUNTRY_BW    X-Relay-Countries =~/\bBW\b/
+describe        RELAYCOUNTRY_BW    Relayed through Botswana
+score           RELAYCOUNTRY_BW    3.0
+
+header          RELAYCOUNTRY_BY    X-Relay-Countries =~/\bBY\b/
+describe        RELAYCOUNTRY_BY    Relayed through Belarus
+score           RELAYCOUNTRY_BY    3.0
+
+header          RELAYCOUNTRY_BZ    X-Relay-Countries =~/\bBZ\b/
+describe        RELAYCOUNTRY_BZ    Relayed through Belize
+score           RELAYCOUNTRY_BZ    3.0
+
+header          RELAYCOUNTRY_CA    X-Relay-Countries =~/\bCA\b/
+describe        RELAYCOUNTRY_CA    Relayed through Canada
+score           RELAYCOUNTRY_CA    3.0
+
+header          RELAYCOUNTRY_CC    X-Relay-Countries =~/\bCC\b/
+describe        RELAYCOUNTRY_CC    Relayed through Cocos (Keeling) Islands
+score           RELAYCOUNTRY_CC    3.0
+
+header          RELAYCOUNTRY_CD    X-Relay-Countries =~/\bCD\b/
+describe        RELAYCOUNTRY_CD    Relayed through Congo, the Democratic Republic of the
+score           RELAYCOUNTRY_CD    3.0
+
+header          RELAYCOUNTRY_CF    X-Relay-Countries =~/\bCF\b/
+describe        RELAYCOUNTRY_CF    Relayed through Central African Republic
+score           RELAYCOUNTRY_CF    3.0
+
+header          RELAYCOUNTRY_CG    X-Relay-Countries =~/\bCG\b/
+describe        RELAYCOUNTRY_CG    Relayed through Congo
+score           RELAYCOUNTRY_CG    3.0
+
+header          RELAYCOUNTRY_CH    X-Relay-Countries =~/\bCH\b/
+describe        RELAYCOUNTRY_CH    Relayed through Switzerland
+score           RELAYCOUNTRY_CH    3.0
+
+header          RELAYCOUNTRY_CI    X-Relay-Countries =~/\bCI\b/
+describe        RELAYCOUNTRY_CI    Relayed through Côte d'Ivoire
+score           RELAYCOUNTRY_CI    3.0
+
+header          RELAYCOUNTRY_CK    X-Relay-Countries =~/\bCK\b/
+describe        RELAYCOUNTRY_CK    Relayed through Cook Islands
+score           RELAYCOUNTRY_CK    3.0
+
+header          RELAYCOUNTRY_CL    X-Relay-Countries =~/\bCL\b/
+describe        RELAYCOUNTRY_CL    Relayed through Chile
+score           RELAYCOUNTRY_CL    3.0
+
+header          RELAYCOUNTRY_CM    X-Relay-Countries =~/\bCM\b/
+describe        RELAYCOUNTRY_CM    Relayed through Cameroon
+score           RELAYCOUNTRY_CM    3.0
+
+header          RELAYCOUNTRY_CN    X-Relay-Countries =~/\bCN\b/
+describe        RELAYCOUNTRY_CN    Relayed through China
+score           RELAYCOUNTRY_CN    4.0
+
+header          RELAYCOUNTRY_CO    X-Relay-Countries =~/\bCO\b/
+describe        RELAYCOUNTRY_CO    Relayed through Colombia
+score           RELAYCOUNTRY_CO    3.0
+
+header          RELAYCOUNTRY_CR    X-Relay-Countries =~/\bCR\b/
+describe        RELAYCOUNTRY_CR    Relayed through Costa Rica
+score           RELAYCOUNTRY_CR    3.0
+
+header          RELAYCOUNTRY_CU    X-Relay-Countries =~/\bCU\b/
+describe        RELAYCOUNTRY_CU    Relayed through Cuba
+score           RELAYCOUNTRY_CU    3.0
+
+header          RELAYCOUNTRY_CV    X-Relay-Countries =~/\bCV\b/
+describe        RELAYCOUNTRY_CV    Relayed through Cape Verde
+score           RELAYCOUNTRY_CV    3.0
+
+header          RELAYCOUNTRY_CX    X-Relay-Countries =~/\bCX\b/
+describe        RELAYCOUNTRY_CX    Relayed through Christmas Island
+score           RELAYCOUNTRY_CX    3.0
+
+header          RELAYCOUNTRY_CY    X-Relay-Countries =~/\bCY\b/
+describe        RELAYCOUNTRY_CY    Relayed through Cyprus
+score           RELAYCOUNTRY_CY    3.0
+
+header          RELAYCOUNTRY_CZ    X-Relay-Countries =~/\bCZ\b/
+describe        RELAYCOUNTRY_CZ    Relayed through Czech Republic
+score           RELAYCOUNTRY_CZ    0.5
+
+header          RELAYCOUNTRY_DE    X-Relay-Countries =~/\bDE\b/
+describe        RELAYCOUNTRY_DE    Relayed through Germany
+score           RELAYCOUNTRY_DE    3.0
+
+header          RELAYCOUNTRY_DJ    X-Relay-Countries =~/\bDJ\b/
+describe        RELAYCOUNTRY_DJ    Relayed through Djibouti
+score           RELAYCOUNTRY_DJ    3.0
+
+header          RELAYCOUNTRY_DK    X-Relay-Countries =~/\bDK\b/
+describe        RELAYCOUNTRY_DK    Relayed through Denmark
+score           RELAYCOUNTRY_DK    3.0
+
+header          RELAYCOUNTRY_DM    X-Relay-Countries =~/\bDM\b/
+describe        RELAYCOUNTRY_DM    Relayed through Dominica
+score           RELAYCOUNTRY_DM    3.0
+
+header          RELAYCOUNTRY_DO    X-Relay-Countries =~/\bDO\b/
+describe        RELAYCOUNTRY_DO    Relayed through Dominican Republic
+score           RELAYCOUNTRY_DO    3.0
+
+header          RELAYCOUNTRY_DZ    X-Relay-Countries =~/\bDZ\b/
+describe        RELAYCOUNTRY_DZ    Relayed through Algeria
+score           RELAYCOUNTRY_DZ    3.0
+
+header          RELAYCOUNTRY_EC    X-Relay-Countries =~/\bEC\b/
+describe        RELAYCOUNTRY_EC    Relayed through Ecuador
+score           RELAYCOUNTRY_EC    3.0
+
+header          RELAYCOUNTRY_EE    X-Relay-Countries =~/\bEE\b/
+describe        RELAYCOUNTRY_EE    Relayed through Estonia
+score           RELAYCOUNTRY_EE    3.0
+
+header          RELAYCOUNTRY_EG    X-Relay-Countries =~/\bEG\b/
+describe        RELAYCOUNTRY_EG    Relayed through Egypt
+score           RELAYCOUNTRY_EG    3.0
+
+header          RELAYCOUNTRY_EH    X-Relay-Countries =~/\bEH\b/
+describe        RELAYCOUNTRY_EH    Relayed through Western Sahara
+score           RELAYCOUNTRY_EH    3.0
+
+header          RELAYCOUNTRY_ER    X-Relay-Countries =~/\bER\b/
+describe        RELAYCOUNTRY_ER    Relayed through Eritrea
+score           RELAYCOUNTRY_ER    3.0
+
+header          RELAYCOUNTRY_ES    X-Relay-Countries =~/\bES\b/
+describe        RELAYCOUNTRY_ES    Relayed through Spain
+score           RELAYCOUNTRY_ES    0.001
+
+header          RELAYCOUNTRY_ET    X-Relay-Countries =~/\bET\b/
+describe        RELAYCOUNTRY_ET    Relayed through Ethiopia
+score           RELAYCOUNTRY_ET    3.0
+
+header          RELAYCOUNTRY_FI    X-Relay-Countries =~/\bFI\b/
+describe        RELAYCOUNTRY_FI    Relayed through Finland
+score           RELAYCOUNTRY_FI    3.0
+
+header          RELAYCOUNTRY_FJ    X-Relay-Countries =~/\bFJ\b/
+describe        RELAYCOUNTRY_FJ    Relayed through Fiji
+score           RELAYCOUNTRY_FJ    3.0
+
+header          RELAYCOUNTRY_FK    X-Relay-Countries =~/\bFK\b/
+describe        RELAYCOUNTRY_FK    Relayed through Falkland Islands (Malvinas)
+score           RELAYCOUNTRY_FK    3.0
+
+header          RELAYCOUNTRY_FM    X-Relay-Countries =~/\bFM\b/
+describe        RELAYCOUNTRY_FM    Relayed through Micronesia, Federated States of
+score           RELAYCOUNTRY_FM    3.0
+
+header          RELAYCOUNTRY_FO    X-Relay-Countries =~/\bFO\b/
+describe        RELAYCOUNTRY_FO    Relayed through Faroe Islands
+score           RELAYCOUNTRY_FO    3.0
+
+header          RELAYCOUNTRY_FR    X-Relay-Countries =~/\bFR\b/
+describe        RELAYCOUNTRY_FR    Relayed through France
+score           RELAYCOUNTRY_FR    0.001
+
+header          RELAYCOUNTRY_GA    X-Relay-Countries =~/\bGA\b/
+describe        RELAYCOUNTRY_GA    Relayed through Gabon
+score           RELAYCOUNTRY_GA    3.0
+
+header          RELAYCOUNTRY_GB    X-Relay-Countries =~/\bGB\b/
+describe        RELAYCOUNTRY_GB    Relayed through United Kingdom
+score           RELAYCOUNTRY_GB    1.0
+
+header          RELAYCOUNTRY_GD    X-Relay-Countries =~/\bGD\b/
+describe        RELAYCOUNTRY_GD    Relayed through Grenada
+score           RELAYCOUNTRY_GD    3.0
+
+header          RELAYCOUNTRY_GE    X-Relay-Countries =~/\bGE\b/
+describe        RELAYCOUNTRY_GE    Relayed through Georgia
+score           RELAYCOUNTRY_GE    3.5
+
+header          RELAYCOUNTRY_GF    X-Relay-Countries =~/\bGF\b/
+describe        RELAYCOUNTRY_GF    Relayed through French Guiana
+score           RELAYCOUNTRY_GF    3.0
+
+header          RELAYCOUNTRY_GG    X-Relay-Countries =~/\bGG\b/
+describe        RELAYCOUNTRY_GG    Relayed through Guernsey
+score           RELAYCOUNTRY_GG    3.0
+
+header          RELAYCOUNTRY_GH    X-Relay-Countries =~/\bGH\b/
+describe        RELAYCOUNTRY_GH    Relayed through Ghana
+score           RELAYCOUNTRY_GH    3.5
+
+header          RELAYCOUNTRY_GI    X-Relay-Countries =~/\bGI\b/
+describe        RELAYCOUNTRY_GI    Relayed through Gibraltar
+score           RELAYCOUNTRY_GI    3.0
+
+header          RELAYCOUNTRY_GL    X-Relay-Countries =~/\bGL\b/
+describe        RELAYCOUNTRY_GL    Relayed through Greenland
+score           RELAYCOUNTRY_GL    3.0
+
+header          RELAYCOUNTRY_GM    X-Relay-Countries =~/\bGM\b/
+describe        RELAYCOUNTRY_GM    Relayed through Gambia
+score           RELAYCOUNTRY_GM    3.0
+
+header          RELAYCOUNTRY_GN    X-Relay-Countries =~/\bGN\b/
+describe        RELAYCOUNTRY_GN    Relayed through Guinea
+score           RELAYCOUNTRY_GN    3.0
+
+header          RELAYCOUNTRY_GP    X-Relay-Countries =~/\bGP\b/
+describe        RELAYCOUNTRY_GP    Relayed through Guadeloupe
+score           RELAYCOUNTRY_GP    3.0
+
+header          RELAYCOUNTRY_GQ    X-Relay-Countries =~/\bGQ\b/
+describe        RELAYCOUNTRY_GQ    Relayed through Equatorial Guinea
+score           RELAYCOUNTRY_GQ    3.0
+
+header          RELAYCOUNTRY_GR    X-Relay-Countries =~/\bGR\b/
+describe        RELAYCOUNTRY_GR    Relayed through Greece
+score           RELAYCOUNTRY_GR    3.0
+
+header          RELAYCOUNTRY_GS    X-Relay-Countries =~/\bGS\b/
+describe        RELAYCOUNTRY_GS    Relayed through South Georgia and the South Sandwich Islands
+score           RELAYCOUNTRY_GS    3.0
+
+header          RELAYCOUNTRY_GT    X-Relay-Countries =~/\bGT\b/
+describe        RELAYCOUNTRY_GT    Relayed through Guatemala
+score           RELAYCOUNTRY_GT    3.0
+
+header          RELAYCOUNTRY_GU    X-Relay-Countries =~/\bGU\b/
+describe        RELAYCOUNTRY_GU    Relayed through Guam
+score           RELAYCOUNTRY_GU    3.0
+
+header          RELAYCOUNTRY_GW    X-Relay-Countries =~/\bGW\b/
+describe        RELAYCOUNTRY_GW    Relayed through Guinea-Bissau
+score           RELAYCOUNTRY_GW    3.0
+
+header          RELAYCOUNTRY_GY    X-Relay-Countries =~/\bGY\b/
+describe        RELAYCOUNTRY_GY    Relayed through Guyana
+score           RELAYCOUNTRY_GY    3.0
+
+header          RELAYCOUNTRY_HK    X-Relay-Countries =~/\bHK\b/
+describe        RELAYCOUNTRY_HK    Relayed through Hong Kong
+score           RELAYCOUNTRY_HK    3.0
+
+header          RELAYCOUNTRY_HM    X-Relay-Countries =~/\bHM\b/
+describe        RELAYCOUNTRY_HM    Relayed through Heard Island and McDonald Islands
+score           RELAYCOUNTRY_HM    3.0
+
+header          RELAYCOUNTRY_HN    X-Relay-Countries =~/\bHN\b/
+describe        RELAYCOUNTRY_HN    Relayed through Honduras
+score           RELAYCOUNTRY_HN    3.0
+
+header          RELAYCOUNTRY_HR    X-Relay-Countries =~/\bHR\b/
+describe        RELAYCOUNTRY_HR    Relayed through Croatia
+score           RELAYCOUNTRY_HR    3.0
+
+header          RELAYCOUNTRY_HT    X-Relay-Countries =~/\bHT\b/
+describe        RELAYCOUNTRY_HT    Relayed through Haiti
+score           RELAYCOUNTRY_HT    3.0
+
+header          RELAYCOUNTRY_HU    X-Relay-Countries =~/\bHU\b/
+describe        RELAYCOUNTRY_HU    Relayed through Hungary
+score           RELAYCOUNTRY_HU    3.0
+
+header          RELAYCOUNTRY_ID    X-Relay-Countries =~/\bID\b/
+describe        RELAYCOUNTRY_ID    Relayed through Indonesia
+score           RELAYCOUNTRY_ID    3.5
+
+header          RELAYCOUNTRY_IE    X-Relay-Countries =~/\bIE\b/
+describe        RELAYCOUNTRY_IE    Relayed through Ireland
+score           RELAYCOUNTRY_IE    1.0
+
+header          RELAYCOUNTRY_IL    X-Relay-Countries =~/\bIL\b/
+describe        RELAYCOUNTRY_IL    Relayed through Israel
+score           RELAYCOUNTRY_IL    3.0
+
+header          RELAYCOUNTRY_IM    X-Relay-Countries =~/\bIM\b/
+describe        RELAYCOUNTRY_IM    Relayed through Isle of Man
+score           RELAYCOUNTRY_IM    3.0
+
+header          RELAYCOUNTRY_IN    X-Relay-Countries =~/\bIN\b/
+describe        RELAYCOUNTRY_IN    Relayed through India
+score           RELAYCOUNTRY_IN    3.5
+
+header          RELAYCOUNTRY_IO    X-Relay-Countries =~/\bIO\b/
+describe        RELAYCOUNTRY_IO    Relayed through British Indian Ocean Territory
+score           RELAYCOUNTRY_IO    3.0
+
+header          RELAYCOUNTRY_IQ    X-Relay-Countries =~/\bIQ\b/
+describe        RELAYCOUNTRY_IQ    Relayed through Iraq
+score           RELAYCOUNTRY_IQ    3.0
+
+header          RELAYCOUNTRY_IR    X-Relay-Countries =~/\bIR\b/
+describe        RELAYCOUNTRY_IR    Relayed through Iran, Islamic Republic of
+score           RELAYCOUNTRY_IR    3.0
+
+header          RELAYCOUNTRY_IS    X-Relay-Countries =~/\bIS\b/
+describe        RELAYCOUNTRY_IS    Relayed through Iceland
+score           RELAYCOUNTRY_IS    3.0
+
+header          RELAYCOUNTRY_IT    X-Relay-Countries =~/\bIT\b/
+describe        RELAYCOUNTRY_IT    Relayed through Italy
+score           RELAYCOUNTRY_IT    0.5
+
+header          RELAYCOUNTRY_JE    X-Relay-Countries =~/\bJE\b/
+describe        RELAYCOUNTRY_JE    Relayed through Jersey
+score           RELAYCOUNTRY_JE    3.0
+
+header          RELAYCOUNTRY_JM    X-Relay-Countries =~/\bJM\b/
+describe        RELAYCOUNTRY_JM    Relayed through Jamaica
+score           RELAYCOUNTRY_JM    3.0
+
+header          RELAYCOUNTRY_JO    X-Relay-Countries =~/\bJO\b/
+describe        RELAYCOUNTRY_JO    Relayed through Jordan
+score           RELAYCOUNTRY_JO    3.0
+
+header          RELAYCOUNTRY_JP    X-Relay-Countries =~/\bJP\b/
+describe        RELAYCOUNTRY_JP    Relayed through Japan
+score           RELAYCOUNTRY_JP    3.5
+
+header          RELAYCOUNTRY_KE    X-Relay-Countries =~/\bKE\b/
+describe        RELAYCOUNTRY_KE    Relayed through Kenya
+score           RELAYCOUNTRY_KE    3.0
+
+header          RELAYCOUNTRY_KG    X-Relay-Countries =~/\bKG\b/
+describe        RELAYCOUNTRY_KG    Relayed through Kyrgyzstan
+score           RELAYCOUNTRY_KG    3.0
+
+header          RELAYCOUNTRY_KH    X-Relay-Countries =~/\bKH\b/
+describe        RELAYCOUNTRY_KH    Relayed through Cambodia
+score           RELAYCOUNTRY_KH    3.0
+
+header          RELAYCOUNTRY_KI    X-Relay-Countries =~/\bKI\b/
+describe        RELAYCOUNTRY_KI    Relayed through Kiribati
+score           RELAYCOUNTRY_KI    3.0
+
+header          RELAYCOUNTRY_KM    X-Relay-Countries =~/\bKM\b/
+describe        RELAYCOUNTRY_KM    Relayed through Comoros
+score           RELAYCOUNTRY_KM    3.0
+
+header          RELAYCOUNTRY_KN    X-Relay-Countries =~/\bKN\b/
+describe        RELAYCOUNTRY_KN    Relayed through Saint Kitts and Nevis
+score           RELAYCOUNTRY_KN    3.0
+
+header          RELAYCOUNTRY_KP    X-Relay-Countries =~/\bKP\b/
+describe        RELAYCOUNTRY_KP    Relayed through Korea, Democratic People's Republic of
+score           RELAYCOUNTRY_KP    3.0
+
+header          RELAYCOUNTRY_KR    X-Relay-Countries =~/\bKR\b/
+describe        RELAYCOUNTRY_KR    Relayed through Korea, Republic of
+score           RELAYCOUNTRY_KR    3.5
+
+header          RELAYCOUNTRY_KW    X-Relay-Countries =~/\bKW\b/
+describe        RELAYCOUNTRY_KW    Relayed through Kuwait
+score           RELAYCOUNTRY_KW    3.5
+
+header          RELAYCOUNTRY_KY    X-Relay-Countries =~/\bKY\b/
+describe        RELAYCOUNTRY_KY    Relayed through Cayman Islands
+score           RELAYCOUNTRY_KY    3.0
+
+header          RELAYCOUNTRY_KZ    X-Relay-Countries =~/\bKZ\b/
+describe        RELAYCOUNTRY_KZ    Relayed through Kazakhstan
+score           RELAYCOUNTRY_KZ    3.5
+
+header          RELAYCOUNTRY_LA    X-Relay-Countries =~/\bLA\b/
+describe        RELAYCOUNTRY_LA    Relayed through Lao People's Democratic Republic
+score           RELAYCOUNTRY_LA    3.0
+
+header          RELAYCOUNTRY_LB    X-Relay-Countries =~/\bLB\b/
+describe        RELAYCOUNTRY_LB    Relayed through Lebanon
+score           RELAYCOUNTRY_LB    3.0
+
+header          RELAYCOUNTRY_LC    X-Relay-Countries =~/\bLC\b/
+describe        RELAYCOUNTRY_LC    Relayed through Saint Lucia
+score           RELAYCOUNTRY_LC    3.0
+
+header          RELAYCOUNTRY_LI    X-Relay-Countries =~/\bLI\b/
+describe        RELAYCOUNTRY_LI    Relayed through Liechtenstein
+score           RELAYCOUNTRY_LI    3.0
+
+header          RELAYCOUNTRY_LK    X-Relay-Countries =~/\bLK\b/
+describe        RELAYCOUNTRY_LK    Relayed through Sri Lanka
+score           RELAYCOUNTRY_LK    3.0
+
+header          RELAYCOUNTRY_LR    X-Relay-Countries =~/\bLR\b/
+describe        RELAYCOUNTRY_LR    Relayed through Liberia
+score           RELAYCOUNTRY_LR    3.0
+
+header          RELAYCOUNTRY_LS    X-Relay-Countries =~/\bLS\b/
+describe        RELAYCOUNTRY_LS    Relayed through Lesotho
+score           RELAYCOUNTRY_LS    3.0
+
+header          RELAYCOUNTRY_LT    X-Relay-Countries =~/\bLT\b/
+describe        RELAYCOUNTRY_LT    Relayed through Lithuania
+score           RELAYCOUNTRY_LT    3.0
+
+header          RELAYCOUNTRY_LU    X-Relay-Countries =~/\bLU\b/
+describe        RELAYCOUNTRY_LU    Relayed through Luxembourg
+score           RELAYCOUNTRY_LU    3.0
+
+header          RELAYCOUNTRY_LV    X-Relay-Countries =~/\bLV\b/
+describe        RELAYCOUNTRY_LV    Relayed through Latvia
+score           RELAYCOUNTRY_LV    3.0
+
+header          RELAYCOUNTRY_LY    X-Relay-Countries =~/\bLY\b/
+describe        RELAYCOUNTRY_LY    Relayed through Libyan Arab Jamahiriya
+score           RELAYCOUNTRY_LY    3.0
+
+header          RELAYCOUNTRY_MA    X-Relay-Countries =~/\bMA\b/
+describe        RELAYCOUNTRY_MA    Relayed through Morocco
+score           RELAYCOUNTRY_MA    3.0
+
+header          RELAYCOUNTRY_MC    X-Relay-Countries =~/\bMC\b/
+describe        RELAYCOUNTRY_MC    Relayed through Monaco
+score           RELAYCOUNTRY_MC    3.0
+
+header          RELAYCOUNTRY_MD    X-Relay-Countries =~/\bMD\b/
+describe        RELAYCOUNTRY_MD    Relayed through Moldova, Republic of
+score           RELAYCOUNTRY_MD    3.0
+
+header          RELAYCOUNTRY_ME    X-Relay-Countries =~/\bME\b/
+describe        RELAYCOUNTRY_ME    Relayed through Montenegro
+score           RELAYCOUNTRY_ME    3.0
+
+header          RELAYCOUNTRY_MG    X-Relay-Countries =~/\bMG\b/
+describe        RELAYCOUNTRY_MG    Relayed through Madagascar
+score           RELAYCOUNTRY_MG    3.0
+
+header          RELAYCOUNTRY_MH    X-Relay-Countries =~/\bMH\b/
+describe        RELAYCOUNTRY_MH    Relayed through Marshall Islands
+score           RELAYCOUNTRY_MH    3.0
+
+header          RELAYCOUNTRY_MK    X-Relay-Countries =~/\bMK\b/
+describe        RELAYCOUNTRY_MK    Relayed through Macedonia, the former Yugoslav Republic of
+score           RELAYCOUNTRY_MK    3.0
+
+header          RELAYCOUNTRY_ML    X-Relay-Countries =~/\bML\b/
+describe        RELAYCOUNTRY_ML    Relayed through Mali
+score           RELAYCOUNTRY_ML    3.0
+
+header          RELAYCOUNTRY_MM    X-Relay-Countries =~/\bMM\b/
+describe        RELAYCOUNTRY_MM    Relayed through Myanmar
+score           RELAYCOUNTRY_MM    3.0
+
+header          RELAYCOUNTRY_MN    X-Relay-Countries =~/\bMN\b/
+describe        RELAYCOUNTRY_MN    Relayed through Mongolia
+score           RELAYCOUNTRY_MN    3.0
+
+header          RELAYCOUNTRY_MO    X-Relay-Countries =~/\bMO\b/
+describe        RELAYCOUNTRY_MO    Relayed through Macao
+score           RELAYCOUNTRY_MO    3.0
+
+header          RELAYCOUNTRY_MP    X-Relay-Countries =~/\bMP\b/
+describe        RELAYCOUNTRY_MP    Relayed through Northern Mariana Islands
+score           RELAYCOUNTRY_MP    3.0
+
+header          RELAYCOUNTRY_MQ    X-Relay-Countries =~/\bMQ\b/
+describe        RELAYCOUNTRY_MQ    Relayed through Martinique
+score           RELAYCOUNTRY_MQ    3.0
+
+header          RELAYCOUNTRY_MR    X-Relay-Countries =~/\bMR\b/
+describe        RELAYCOUNTRY_MR    Relayed through Mauritania
+score           RELAYCOUNTRY_MR    3.0
+
+header          RELAYCOUNTRY_MS    X-Relay-Countries =~/\bMS\b/
+describe        RELAYCOUNTRY_MS    Relayed through Montserrat
+score           RELAYCOUNTRY_MS    3.0
+
+header          RELAYCOUNTRY_MT    X-Relay-Countries =~/\bMT\b/
+describe        RELAYCOUNTRY_MT    Relayed through Malta
+score           RELAYCOUNTRY_MT    3.0
+
+header          RELAYCOUNTRY_MU    X-Relay-Countries =~/\bMU\b/
+describe        RELAYCOUNTRY_MU    Relayed through Mauritius
+score           RELAYCOUNTRY_MU    3.0
+
+header          RELAYCOUNTRY_MV    X-Relay-Countries =~/\bMV\b/
+describe        RELAYCOUNTRY_MV    Relayed through Maldives
+score           RELAYCOUNTRY_MV    3.0
+
+header          RELAYCOUNTRY_MW    X-Relay-Countries =~/\bMW\b/
+describe        RELAYCOUNTRY_MW    Relayed through Malawi
+score           RELAYCOUNTRY_MW    3.0
+
+header          RELAYCOUNTRY_MX    X-Relay-Countries =~/\bMX\b/
+describe        RELAYCOUNTRY_MX    Relayed through Mexico
+score           RELAYCOUNTRY_MX    3.0
+
+header          RELAYCOUNTRY_MY    X-Relay-Countries =~/\bMY\b/
+describe        RELAYCOUNTRY_MY    Relayed through Malaysia
+score           RELAYCOUNTRY_MY    3.0
+
+header          RELAYCOUNTRY_MZ    X-Relay-Countries =~/\bMZ\b/
+describe        RELAYCOUNTRY_MZ    Relayed through Mozambique
+score           RELAYCOUNTRY_MZ    3.0
+
+header          RELAYCOUNTRY_NA    X-Relay-Countries =~/\bNA\b/
+describe        RELAYCOUNTRY_NA    Relayed through Namibia
+score           RELAYCOUNTRY_NA    3.0
+
+header          RELAYCOUNTRY_NC    X-Relay-Countries =~/\bNC\b/
+describe        RELAYCOUNTRY_NC    Relayed through New Caledonia
+score           RELAYCOUNTRY_NC    3.0
+
+header          RELAYCOUNTRY_NE    X-Relay-Countries =~/\bNE\b/
+describe        RELAYCOUNTRY_NE    Relayed through Niger
+score           RELAYCOUNTRY_NE    3.0
+
+header          RELAYCOUNTRY_NF    X-Relay-Countries =~/\bNF\b/
+describe        RELAYCOUNTRY_NF    Relayed through Norfolk Island
+score           RELAYCOUNTRY_NF    3.0
+
+header          RELAYCOUNTRY_NG    X-Relay-Countries =~/\bNG\b/
+describe        RELAYCOUNTRY_NG    Relayed through Nigeria
+score           RELAYCOUNTRY_NG    3.0
+
+header          RELAYCOUNTRY_NI    X-Relay-Countries =~/\bNI\b/
+describe        RELAYCOUNTRY_NI    Relayed through Nicaragua
+score           RELAYCOUNTRY_NI    3.0
+
+header          RELAYCOUNTRY_NL    X-Relay-Countries =~/\bNL\b/
+describe        RELAYCOUNTRY_NL    Relayed through Netherlands
+score           RELAYCOUNTRY_NL    3.0
+
+header          RELAYCOUNTRY_NO    X-Relay-Countries =~/\bNO\b/
+describe        RELAYCOUNTRY_NO    Relayed through Norway
+score           RELAYCOUNTRY_NO    3.0
+
+header          RELAYCOUNTRY_NP    X-Relay-Countries =~/\bNP\b/
+describe        RELAYCOUNTRY_NP    Relayed through Nepal
+score           RELAYCOUNTRY_NP    3.0
+
+header          RELAYCOUNTRY_NR    X-Relay-Countries =~/\bNR\b/
+describe        RELAYCOUNTRY_NR    Relayed through Nauru
+score           RELAYCOUNTRY_NR    3.0
+
+header          RELAYCOUNTRY_NU    X-Relay-Countries =~/\bNU\b/
+describe        RELAYCOUNTRY_NU    Relayed through Niue
+score           RELAYCOUNTRY_NU    3.0
+
+header          RELAYCOUNTRY_NZ    X-Relay-Countries =~/\bNZ\b/
+describe        RELAYCOUNTRY_NZ    Relayed through New Zealand
+score           RELAYCOUNTRY_NZ    3.0
+
+header          RELAYCOUNTRY_OM    X-Relay-Countries =~/\bOM\b/
+describe        RELAYCOUNTRY_OM    Relayed through Oman
+score           RELAYCOUNTRY_OM    3.0
+
+header          RELAYCOUNTRY_PA    X-Relay-Countries =~/\bPA\b/
+describe        RELAYCOUNTRY_PA    Relayed through Panama
+score           RELAYCOUNTRY_PA    3.0
+
+header          RELAYCOUNTRY_PE    X-Relay-Countries =~/\bPE\b/
+describe        RELAYCOUNTRY_PE    Relayed through Peru
+score           RELAYCOUNTRY_PE    3.0
+
+header          RELAYCOUNTRY_PF    X-Relay-Countries =~/\bPF\b/
+describe        RELAYCOUNTRY_PF    Relayed through French Polynesia
+score           RELAYCOUNTRY_PF    3.0
+
+header          RELAYCOUNTRY_PG    X-Relay-Countries =~/\bPG\b/
+describe        RELAYCOUNTRY_PG    Relayed through Papua New Guinea
+score           RELAYCOUNTRY_PG    3.0
+
+header          RELAYCOUNTRY_PH    X-Relay-Countries =~/\bPH\b/
+describe        RELAYCOUNTRY_PH    Relayed through Philippines
+score           RELAYCOUNTRY_PH    3.0
+
+header          RELAYCOUNTRY_PK    X-Relay-Countries =~/\bPK\b/
+describe        RELAYCOUNTRY_PK    Relayed through Pakistan
+score           RELAYCOUNTRY_PK    3.0
+
+header          RELAYCOUNTRY_PL    X-Relay-Countries =~/\bPL\b/
+describe        RELAYCOUNTRY_PL    Relayed through Poland
+score           RELAYCOUNTRY_PL    3.5
+
+header          RELAYCOUNTRY_PM    X-Relay-Countries =~/\bPM\b/
+describe        RELAYCOUNTRY_PM    Relayed through Saint Pierre and Miquelon
+score           RELAYCOUNTRY_PM    3.0
+
+header          RELAYCOUNTRY_PN    X-Relay-Countries =~/\bPN\b/
+describe        RELAYCOUNTRY_PN    Relayed through Pitcairn
+score           RELAYCOUNTRY_PN    3.0
+
+header          RELAYCOUNTRY_PR    X-Relay-Countries =~/\bPR\b/
+describe        RELAYCOUNTRY_PR    Relayed through Puerto Rico
+score           RELAYCOUNTRY_PR    3.0
+
+header          RELAYCOUNTRY_PS    X-Relay-Countries =~/\bPS\b/
+describe        RELAYCOUNTRY_PS    Relayed through Palestinian Territory, Occupied
+score           RELAYCOUNTRY_PS    3.0
+
+header          RELAYCOUNTRY_PT    X-Relay-Countries =~/\bPT\b/
+describe        RELAYCOUNTRY_PT    Relayed through Portugal
+score           RELAYCOUNTRY_PT    0.001
+
+header          RELAYCOUNTRY_PW    X-Relay-Countries =~/\bPW\b/
+describe        RELAYCOUNTRY_PW    Relayed through Palau
+score           RELAYCOUNTRY_PW    3.0
+
+header          RELAYCOUNTRY_PY    X-Relay-Countries =~/\bPY\b/
+describe        RELAYCOUNTRY_PY    Relayed through Paraguay
+score           RELAYCOUNTRY_PY    3.0
+
+header          RELAYCOUNTRY_QA    X-Relay-Countries =~/\bQA\b/
+describe        RELAYCOUNTRY_QA    Relayed through Qatar
+score           RELAYCOUNTRY_QA    3.0
+
+header          RELAYCOUNTRY_RE    X-Relay-Countries =~/\bRE\b/
+describe        RELAYCOUNTRY_RE    Relayed through Réunion
+score           RELAYCOUNTRY_RE    3.0
+
+header          RELAYCOUNTRY_RO    X-Relay-Countries =~/\bRO\b/
+describe        RELAYCOUNTRY_RO    Relayed through Romania
+score           RELAYCOUNTRY_RO    3.0
+
+header          RELAYCOUNTRY_RS    X-Relay-Countries =~/\bRS\b/
+describe        RELAYCOUNTRY_RS    Relayed through Serbia
+score           RELAYCOUNTRY_RS    3.0
+
+header          RELAYCOUNTRY_RU    X-Relay-Countries =~/\bRU\b/
+describe        RELAYCOUNTRY_RU    Relayed through Russian Federation
+score           RELAYCOUNTRY_RU    3.5
+
+header          RELAYCOUNTRY_RW    X-Relay-Countries =~/\bRW\b/
+describe        RELAYCOUNTRY_RW    Relayed through Rwanda
+score           RELAYCOUNTRY_RW    3.0
+
+header          RELAYCOUNTRY_SA    X-Relay-Countries =~/\bSA\b/
+describe        RELAYCOUNTRY_SA    Relayed through Saudi Arabia
+score           RELAYCOUNTRY_SA    3.0
+
+header          RELAYCOUNTRY_SB    X-Relay-Countries =~/\bSB\b/
+describe        RELAYCOUNTRY_SB    Relayed through Solomon Islands
+score           RELAYCOUNTRY_SB    3.0
+
+header          RELAYCOUNTRY_SC    X-Relay-Countries =~/\bSC\b/
+describe        RELAYCOUNTRY_SC    Relayed through Seychelles
+score           RELAYCOUNTRY_SC    3.0
+
+header          RELAYCOUNTRY_SD    X-Relay-Countries =~/\bSD\b/
+describe        RELAYCOUNTRY_SD    Relayed through Sudan
+score           RELAYCOUNTRY_SD    3.0
+
+header          RELAYCOUNTRY_SE    X-Relay-Countries =~/\bSE\b/
+describe        RELAYCOUNTRY_SE    Relayed through Sweden
+score           RELAYCOUNTRY_SE    3.0
+
+header          RELAYCOUNTRY_SG    X-Relay-Countries =~/\bSG\b/
+describe        RELAYCOUNTRY_SG    Relayed through Singapore
+score           RELAYCOUNTRY_SG    3.0
+
+header          RELAYCOUNTRY_SH    X-Relay-Countries =~/\bSH\b/
+describe        RELAYCOUNTRY_SH    Relayed through Saint Helena
+score           RELAYCOUNTRY_SH    3.0
+
+header          RELAYCOUNTRY_SI    X-Relay-Countries =~/\bSI\b/
+describe        RELAYCOUNTRY_SI    Relayed through Slovenia
+score           RELAYCOUNTRY_SI    3.0
+
+header          RELAYCOUNTRY_SJ    X-Relay-Countries =~/\bSJ\b/
+describe        RELAYCOUNTRY_SJ    Relayed through Svalbard and Jan Mayen
+score           RELAYCOUNTRY_SJ    3.0
+
+header          RELAYCOUNTRY_SK    X-Relay-Countries =~/\bSK\b/
+describe        RELAYCOUNTRY_SK    Relayed through Slovakia
+score           RELAYCOUNTRY_SK    3.0
+
+header          RELAYCOUNTRY_SL    X-Relay-Countries =~/\bSL\b/
+describe        RELAYCOUNTRY_SL    Relayed through Sierra Leone
+score           RELAYCOUNTRY_SL    3.0
+
+header          RELAYCOUNTRY_SM    X-Relay-Countries =~/\bSM\b/
+describe        RELAYCOUNTRY_SM    Relayed through San Marino
+score           RELAYCOUNTRY_SM    3.0
+
+header          RELAYCOUNTRY_SN    X-Relay-Countries =~/\bSN\b/
+describe        RELAYCOUNTRY_SN    Relayed through Senegal
+score           RELAYCOUNTRY_SN    3.0
+
+header          RELAYCOUNTRY_SO    X-Relay-Countries =~/\bSO\b/
+describe        RELAYCOUNTRY_SO    Relayed through Somalia
+score           RELAYCOUNTRY_SO    3.0
+
+header          RELAYCOUNTRY_SR    X-Relay-Countries =~/\bSR\b/
+describe        RELAYCOUNTRY_SR    Relayed through Suriname
+score           RELAYCOUNTRY_SR    3.0
+
+header          RELAYCOUNTRY_ST    X-Relay-Countries =~/\bST\b/
+describe        RELAYCOUNTRY_ST    Relayed through Sao Tome and Principe
+score           RELAYCOUNTRY_ST    3.0
+
+header          RELAYCOUNTRY_SV    X-Relay-Countries =~/\bSV\b/
+describe        RELAYCOUNTRY_SV    Relayed through El Salvador
+score           RELAYCOUNTRY_SV    3.0
+
+header          RELAYCOUNTRY_SY    X-Relay-Countries =~/\bSY\b/
+describe        RELAYCOUNTRY_SY    Relayed through Syrian Arab Republic
+score           RELAYCOUNTRY_SY    3.0
+
+header          RELAYCOUNTRY_SZ    X-Relay-Countries =~/\bSZ\b/
+describe        RELAYCOUNTRY_SZ    Relayed through Swaziland
+score           RELAYCOUNTRY_SZ    3.0
+
+header          RELAYCOUNTRY_TC    X-Relay-Countries =~/\bTC\b/
+describe        RELAYCOUNTRY_TC    Relayed through Turks and Caicos Islands
+score           RELAYCOUNTRY_TC    3.0
+
+header          RELAYCOUNTRY_TD    X-Relay-Countries =~/\bTD\b/
+describe        RELAYCOUNTRY_TD    Relayed through Chad
+score           RELAYCOUNTRY_TD    3.0
+
+header          RELAYCOUNTRY_TF    X-Relay-Countries =~/\bTF\b/
+describe        RELAYCOUNTRY_TF    Relayed through French Southern Territories
+score           RELAYCOUNTRY_TF    3.0
+
+header          RELAYCOUNTRY_TG    X-Relay-Countries =~/\bTG\b/
+describe        RELAYCOUNTRY_TG    Relayed through Togo
+score           RELAYCOUNTRY_TG    3.0
+
+header          RELAYCOUNTRY_TH    X-Relay-Countries =~/\bTH\b/
+describe        RELAYCOUNTRY_TH    Relayed through Thailand
+score           RELAYCOUNTRY_TH    3.5
+
+header          RELAYCOUNTRY_TJ    X-Relay-Countries =~/\bTJ\b/
+describe        RELAYCOUNTRY_TJ    Relayed through Tajikistan
+score           RELAYCOUNTRY_TJ    3.0
+
+header          RELAYCOUNTRY_TK    X-Relay-Countries =~/\bTK\b/
+describe        RELAYCOUNTRY_TK    Relayed through Tokelau
+score           RELAYCOUNTRY_TK    3.0
+
+header          RELAYCOUNTRY_TL    X-Relay-Countries =~/\bTL\b/
+describe        RELAYCOUNTRY_TL    Relayed through Timor-Leste
+score           RELAYCOUNTRY_TL    3.0
+
+header          RELAYCOUNTRY_TM    X-Relay-Countries =~/\bTM\b/
+describe        RELAYCOUNTRY_TM    Relayed through Turkmenistan
+score           RELAYCOUNTRY_TM    3.0
+
+header          RELAYCOUNTRY_TN    X-Relay-Countries =~/\bTN\b/
+describe        RELAYCOUNTRY_TN    Relayed through Tunisia
+score           RELAYCOUNTRY_TN    3.0
+
+header          RELAYCOUNTRY_TO    X-Relay-Countries =~/\bTO\b/
+describe        RELAYCOUNTRY_TO    Relayed through Tonga
+score           RELAYCOUNTRY_TO    3.0
+
+header          RELAYCOUNTRY_TR    X-Relay-Countries =~/\bTR\b/
+describe        RELAYCOUNTRY_TR    Relayed through Turkey
+score           RELAYCOUNTRY_TR    3.5
+
+header          RELAYCOUNTRY_TT    X-Relay-Countries =~/\bTT\b/
+describe        RELAYCOUNTRY_TT    Relayed through Trinidad and Tobago
+score           RELAYCOUNTRY_TT    3.0
+
+header          RELAYCOUNTRY_TV    X-Relay-Countries =~/\bTV\b/
+describe        RELAYCOUNTRY_TV    Relayed through Tuvalu
+score           RELAYCOUNTRY_TV    3.0
+
+header          RELAYCOUNTRY_TW    X-Relay-Countries =~/\bTW\b/
+describe        RELAYCOUNTRY_TW    Relayed through Taiwan, Province of China
+score           RELAYCOUNTRY_TW    3.5
+
+header          RELAYCOUNTRY_TZ    X-Relay-Countries =~/\bTZ\b/
+describe        RELAYCOUNTRY_TZ    Relayed through Tanzania, United Republic of
+score           RELAYCOUNTRY_TZ    3.0
+
+header          RELAYCOUNTRY_UA    X-Relay-Countries =~/\bUA\b/
+describe        RELAYCOUNTRY_UA    Relayed through Ukraine
+score           RELAYCOUNTRY_UA    3.5
+
+header          RELAYCOUNTRY_UG    X-Relay-Countries =~/\bUG\b/
+describe        RELAYCOUNTRY_UG    Relayed through Uganda
+score           RELAYCOUNTRY_UG    3.0
+
+header          RELAYCOUNTRY_UM    X-Relay-Countries =~/\bUM\b/
+describe        RELAYCOUNTRY_UM    Relayed through United States Minor Outlying Islands
+score           RELAYCOUNTRY_UM    3.0
+
+header          RELAYCOUNTRY_US    X-Relay-Countries =~/\bUS\b/
+describe        RELAYCOUNTRY_US    Relayed through United States
+score           RELAYCOUNTRY_US    0.5
+
+header          RELAYCOUNTRY_UY    X-Relay-Countries =~/\bUY\b/
+describe        RELAYCOUNTRY_UY    Relayed through Uruguay
+score           RELAYCOUNTRY_UY    3.0
+
+header          RELAYCOUNTRY_UZ    X-Relay-Countries =~/\bUZ\b/
+describe        RELAYCOUNTRY_UZ    Relayed through Uzbekistan
+score           RELAYCOUNTRY_UZ    3.0
+
+header          RELAYCOUNTRY_VA    X-Relay-Countries =~/\bVA\b/
+describe        RELAYCOUNTRY_VA    Relayed through Holy See (Vatican City State)
+score           RELAYCOUNTRY_VA    3.0
+
+header          RELAYCOUNTRY_VC    X-Relay-Countries =~/\bVC\b/
+describe        RELAYCOUNTRY_VC    Relayed through Saint Vincent and the Grenadines
+score           RELAYCOUNTRY_VC    3.0
+
+header          RELAYCOUNTRY_VE    X-Relay-Countries =~/\bVE\b/
+describe        RELAYCOUNTRY_VE    Relayed through Venezuela
+score           RELAYCOUNTRY_VE    3.5
+
+header          RELAYCOUNTRY_VG    X-Relay-Countries =~/\bVG\b/
+describe        RELAYCOUNTRY_VG    Relayed through Virgin Islands, British
+score           RELAYCOUNTRY_VG    3.0
+
+header          RELAYCOUNTRY_VI    X-Relay-Countries =~/\bVI\b/
+describe        RELAYCOUNTRY_VI    Relayed through Virgin Islands, U.S.
+score           RELAYCOUNTRY_VI    3.0
+
+header          RELAYCOUNTRY_VN    X-Relay-Countries =~/\bVN\b/
+describe        RELAYCOUNTRY_VN    Relayed through Viet Nam
+score           RELAYCOUNTRY_VN    3.0
+
+header          RELAYCOUNTRY_VU    X-Relay-Countries =~/\bVU\b/
+describe        RELAYCOUNTRY_VU    Relayed through Vanuatu
+score           RELAYCOUNTRY_VU    3.0
+
+header          RELAYCOUNTRY_WF    X-Relay-Countries =~/\bWF\b/
+describe        RELAYCOUNTRY_WF    Relayed through Wallis and Futuna
+score           RELAYCOUNTRY_WF    3.0
+
+header          RELAYCOUNTRY_WS    X-Relay-Countries =~/\bWS\b/
+describe        RELAYCOUNTRY_WS    Relayed through Samoa
+score           RELAYCOUNTRY_WS    3.0
+
+header          RELAYCOUNTRY_YE    X-Relay-Countries =~/\bYE\b/
+describe        RELAYCOUNTRY_YE    Relayed through Yemen
+score           RELAYCOUNTRY_YE    3.0
+
+header          RELAYCOUNTRY_YT    X-Relay-Countries =~/\bYT\b/
+describe        RELAYCOUNTRY_YT    Relayed through Mayotte
+score           RELAYCOUNTRY_YT    3.0
+
+header          RELAYCOUNTRY_ZA    X-Relay-Countries =~/\bZA\b/
+describe        RELAYCOUNTRY_ZA    Relayed through South Africa
+score           RELAYCOUNTRY_ZA    3.0
+
+header          RELAYCOUNTRY_ZM    X-Relay-Countries =~/\bZM\b/
+describe        RELAYCOUNTRY_ZM    Relayed through Zambia
+score           RELAYCOUNTRY_ZM    3.0
+
+header          RELAYCOUNTRY_ZW    X-Relay-Countries =~/\bZW\b/
+describe        RELAYCOUNTRY_ZW    Relayed through Zimbabwe
+score           RELAYCOUNTRY_ZW    3.0

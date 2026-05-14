@@ -1,0 +1,420 @@
+---
+layout: post
+title:  "Creando un sistema de correo profesional con Zimbra (1/2): Instalación"
+date:    2016-01-21 00:00:00 +0200
+tags: zimbra
+---
+
+
+[La suite de colaboración Zimbra](https://www.zimbra.com/) nos encanta y ya os hemos contado anteriormente cómo empezamos a usarla, que tenemos desarrollos para ella, cómo crear certificados SSL con firma SHA256 o cómo gestionar el estado free/busy o libre/ocupado de la agenda.
+
+Hoy comienzo una serie de posts para explicar **cómo realizar una instalación y configuración completa de un sistema de correo electrónico profesional** utilizando su edición Open Source. Una vez finalizados, tendremos nuestro **sistema de correo con Zimbra** funcionando y listo para producción.
+
+Dado que muchos de nosotros ya tenemos un sistema de correo electrónico, la idea es realizar esta instalación configurándolo en paralelo y, cuando la demos por terminada, hacer el cambio del DNS público para convertir el nuevo sistema en el principal de producción.
+
+En este tipo de tutoriales es fácil siempre ir a «copiar-pegar» los pasos, pero creo que lo mejor es hacer una primera lectura para entender los pasos y luego ponernos con ello.
+
+![zimbra](/assets/images/Zimbra_Identity_Color_HighRes.png){: .w-50  }
+
+## Pasos previos
+
+Para la instalación utilizaremos la última versión estable en este momento, que es **Zimbra 8.6**. Para ello necesitaremos un servidor con la instalación de una de las distribuciones soportadas por Zimbra. En nuestro caso vamos a utilizar la versión 64 bits de la **LTS de Ubuntu 14.04 server edition**.
+
+En caso de que prefiráis cualquiera de las otras distribuciones soportadas, los pasos serán parecidos, pero tendréis que adaptarlos a la distribución elegida.
+
+### Instalación del servidor
+
+No entra en este tutorial explicar cómo realizar la instalación de la distribución elegida, pero nos tenemos que asegurar de que cumple una serie de requisitos para que posteriormente la instalación de Zimbra sea correcta. Aparte de lo siguiente que exponemos, sólo indicamos que se **instale el servidor SSH** durante la instalación.
+
+- **Hostname:** Tenemos que tener en cuenta el nombre que le queremos dar al servidor, ya que Zimbra lo tiene muy en cuenta durante su instalación. Para nuestro ejemplo, durante la instalación de Ubuntu, le hemos dado el «nombre de la máquina» **mail** y al «nombre de dominio» **irontec.com**   Tras la instalación:
+
+        root@mail:~# cat /etc/hosts
+        127.0.0.1	localhost
+        123.1.2.3	mail.irontec.com	mail
+
+        # The following lines are desirable for IPv6 capable hosts
+        ::1     localhost ip6-localhost ip6-loopback
+        ff02::1 ip6-allnodes
+        ff02::2 ip6-allrouters
+
+El hostname mail.irontec.com será el registro **MX** que tendrá nuestro dominio irontec.com en el **DNS**, de ahí la importancia del mismo.
+
+Lógicamente tendréis que cambiar la IP 123.1.2.3 por la IP pública donde váis a realizar la instalación de Zimbra.
+
+### Dependencias necesarias por Zimbra
+
+Este paso nos lo podríamos saltar e ir directamente a la instalación de Zimbra, pero durante la instalación nos daría un aviso como el siguiente (fijaros en las líneas resaltadas):
+
+    Checking for prerequisites...
+        FOUND: NPTL
+        FOUND: netcat-openbsd-1.105-7ubuntu1
+        FOUND: sudo-1.8.9p5-1ubuntu1.2
+        FOUND: libidn11-1.28-1ubuntu2
+        FOUND: libpcre3-1:8.31-2ubuntu2.1
+        FOUND: libgmp10-2:5.1.3+dfsg-1ubuntu1
+        FOUND: libexpat1-2.1.0-4ubuntu1.1
+        FOUND: libstdc++6-4.8.4-2ubuntu1~14.04
+        FOUND: libperl5.18-5.18.2-2ubuntu1
+        MISSING: libaio1
+        FOUND: resolvconf-1.69ubuntu1.1
+        FOUND: unzip-6.0-9ubuntu1.5
+
+    Checking for suggested prerequisites...
+        MISSING: pax does not appear to be installed.
+        FOUND: perl-5.18.2
+        MISSING: sysstat does not appear to be installed.
+        MISSING: sqlite3 does not appear to be installed.
+
+    ###WARNING###
+
+    The suggested version of one or more packages is not installed.
+    This could cause problems with the operation of Zimbra.
+
+    Do you wish to continue? \[N\]
+
+Por lo tanto, para que no nos salte este error, y hagamos una instalación de la mejor manera posible, lo que tenemos que hacer es realizar la **instalación previa de las dependencias**:
+
+    root@mail:~# apt-get install libaio1 pax sysstat sqlite3
+    Leyendo lista de paquetes... Hecho
+    [...]
+    Configurando libaio1:amd64 (0.3.109-4) ...
+    Configurando libsensors4:amd64 (1:3.3.4-2ubuntu1) ...
+    Configurando pax (1:20120606-2+deb7u1) ...
+    Configurando sqlite3 (3.8.2-1ubuntu2.1) ...
+    Configurando sysstat (10.2.0-1) ...
+
+Es posible que en otras distribuciones haya dependencias distintas.
+
+### Comprobación DNS
+
+Tal como he explicado anteriormente, vamos a realizar la instalación de Zimbra en paralelo con el sistema que tenemos actualmente en producción, por lo que vamos a tener que «engañar» a Zimbra para hacerle creer que el servidor donde estamos realizando la instalación es el servidor MX principal. Para ello tenemos dos opciones:
+
+- **Modificación de hostname:** Esto quiere decir que el servidor que está actualmente en producción y el nuestro se llamen distinto. El actual podría ser _correo.irontec.com_ y el nuevo _mail.irontec.com_ . Esto supondría tener que modificar la configuración de todos los clientes de correo que usamos, lo que no es muy efectivo.
+- **Utilización de otro servidor DNS:** Como vamos a utilizar el mismo hostname que el servidor actual en producción, cuando zimbra compruebe el DNS se dará cuenta que la IP del servidor no corresponde con el registro MX principal. Para estos casos lo ideal es tener un DNS de pruebas donde podamos modificar los registros que queramos sin que afecte a producción, y modificar el fichero **/etc/resolv.conf** de nuestro servidor Zimbra.
+
+        root@mail:# cat /etc/resolv.conf 
+        nameserver 192.168.90.1 # servidor DNS temporal
+        nameserver 127.0.0.1
+        search irontec.com
+
+Nuestro servidor DNS de pruebas es 192.168.90.1.
+
+    root@mail:~# host mail.irontec.com 8.8.8.8
+    Using domain server:
+    Name: 8.8.8.8
+    Address: 8.8.8.8#53
+    Aliases: 
+
+    mail.irontec.com has address 176.31.102.65
+
+    root@mail:~# host mail.irontec.com 192.168.90.1
+    Using domain server:
+    Name: 192.168.90.1
+    Address: 192.168.90.1#53
+    Aliases: 
+
+    mail.irontec.com has address 123.1.2.3
+
+Como se puede ver, un DNS público (hemos usado el de Google) nos da la IP del servidor actual en producción, mientras que el servidor DNS de pruebas nos ha dado la IP de nuestro servidor donde estamos instalando nuestro Zimbra.
+
+**NOTA:** En versiones anteriores de Zimbra se solía hacer la instalación del DNS en el propio servidor zimbra, pero desde la inclusión de «**dnscache**» ya no es necesario. Podríamos seguir haciendo la instalación del DNS en local y luego no elegir el paquete «dnscache» de Zimbra durante la instalación. Pero, para realizar una instalación más limpia, es mejor utilizar un DNS externo de pruebas que tengamos.
+
+## Instalación de Zimbra 8.6 Open Source
+
+Una vez tenemos el servidor instalado teniendo en cuenta los pasos anteriores, ya podemos ir directo a la **instalación de Zimbra**.
+
+Dado que el instalador genera mucho texto de los pasos que está haciendo, iré añadiendo etiquetas «**\[…\]**» para indicar que el texto sigue, pero que me lo he saltado o que lo pondré posteriormente, ya que voy a realizar una explicación acerca del mismo.
+
+### Descargar Zimbra
+
+Desde [aquí](https://www.zimbra.com/downloads/zimbra-collaboration-open-source/) podremos descargar la versión de nuestra distribución o coger el enlace. Nosotros lo descargamos en el servidor de la siguiente manera:
+
+    root@mail:~# wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+    --2016-01-18 13:59:55--  https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+    Resolving files.zimbra.com (files.zimbra.com)... 54.192.0.133
+    Connecting to files.zimbra.com (files.zimbra.com)|54.192.0.133|:443... connected.
+    HTTP request sent, awaiting response... 200 OK
+    Length: 733882340 (700M) [binary/octet-stream]
+    Saving to: ‘zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz’
+
+    100%[===================================================================================>] 733.882.340 30,4MB/s   in 27s 
+
+    2016-01-18 14:00:23 (25,5 MB/s) - ‘zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz’ saved [733882340/733882340]
+
+### Instalación de Zimbra
+
+Con las dependencias ya instaladas del paso previo, y descargado el instalador, descomprimimos el fichero e iniciamos la instalación:
+
+    root@mail:~# tar -xzf zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz 
+    root@mail:~# cd zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116
+    root@mail:~/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116# ./install.sh
+
+    Operations logged to /tmp/install.log.3673
+    Checking for existing installation...
+        zimbra-ldap...NOT FOUND
+        zimbra-logger...NOT FOUND
+        zimbra-mta...NOT FOUND
+        zimbra-dnscache...NOT FOUND
+        zimbra-snmp...NOT FOUND
+        zimbra-store...NOT FOUND
+        zimbra-apache...NOT FOUND
+        zimbra-spell...NOT FOUND
+        zimbra-convertd...NOT FOUND
+        zimbra-memcached...NOT FOUND
+        zimbra-proxy...NOT FOUND
+        zimbra-archiving...NOT FOUND
+        zimbra-core...NOT FOUND
+
+
+    PLEASE READ THIS AGREEMENT CAREFULLY BEFORE USING THE SOFTWARE.
+    ZIMBRA, INC. ("ZIMBRA") WILL ONLY LICENSE THIS SOFTWARE TO YOU IF YOU
+    FIRST ACCEPT THE TERMS OF THIS AGREEMENT. BY DOWNLOADING OR INSTALLING
+    THE SOFTWARE, OR USING THE PRODUCT, YOU ARE CONSENTING TO BE BOUND BY
+    THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS
+    AGREEMENT, THEN DO NOT DOWNLOAD, INSTALL OR USE THE PRODUCT.
+
+    License Terms for the Zimbra Collaboration Suite:
+    http://www.zimbra.com/license/zimbra-public-eula-2-5.html
+
+
+
+    Do you agree with the terms of the software license agreement? [N] Y
+
+
+    Checking for prerequisites...
+        FOUND: NPTL
+        FOUND: netcat-openbsd-1.105-7ubuntu1
+        FOUND: sudo-1.8.9p5-1ubuntu1.2
+        FOUND: libidn11-1.28-1ubuntu2
+        FOUND: libpcre3-1:8.31-2ubuntu2.1
+        FOUND: libgmp10-2:5.1.3+dfsg-1ubuntu1
+        FOUND: libexpat1-2.1.0-4ubuntu1.1
+        FOUND: libstdc++6-4.8.4-2ubuntu1~14.04
+        FOUND: libperl5.18-5.18.2-2ubuntu1
+        FOUND: libaio1-0.3.109-4
+        FOUND: resolvconf-1.69ubuntu1.1
+        FOUND: unzip-6.0-9ubuntu1.5
+
+    Checking for suggested prerequisites...
+        FOUND: pax
+        FOUND: perl-5.18.2 
+        FOUND: sysstat
+        FOUND: sqlite3
+    Prerequisite check complete.
+
+    Checking for installable packages
+
+    Found zimbra-core
+    Found zimbra-ldap
+    Found zimbra-logger
+    Found zimbra-mta
+    Found zimbra-dnscache   
+    Found zimbra-snmp
+    Found zimbra-store
+    Found zimbra-apache
+    Found zimbra-spell
+    Found zimbra-memcached  
+    Found zimbra-proxy
+
+    [...]
+
+Tal como podemos ver en el log previo, hay varias cosas que podemos destacar.
+
+- **Log de la instalación:** Todo el proceso de instalación se va a loguear en un fichero de texto que es /tmp/install.log seguído del PID de ejecución del instalador. En nuestro ejemplo: «Operations logged to **/tmp/install.log.3673**«
+- **Dependencias encontradas:** Dado que os he avisado de cuáles eran las dependencias a instalar, ahora en la instalación ha ido todo bien 😀 y no tenemos que cancelar la instalación.
+
+Seguimos con el proceso de instalación:
+
+        [...]
+
+        Select the packages to install
+
+        Install zimbra-ldap [Y] 
+
+        Install zimbra-logger [Y] 
+
+        Install zimbra-mta [Y] 
+
+        Install zimbra-dnscache [Y] 
+
+        Install zimbra-snmp [Y] 
+
+        Install zimbra-store [Y] 
+
+        Install zimbra-apache [Y] 
+
+        Install zimbra-spell [Y] 
+
+        Install zimbra-memcached [Y] 
+
+        Install zimbra-proxy [Y] 
+        Checking required space for zimbra-core
+        Checking space for zimbra-store
+        Checking required packages for zimbra-store
+        zimbra-store package check complete.
+
+        Installing:
+            zimbra-core
+            zimbra-ldap
+            zimbra-logger
+            zimbra-mta
+            zimbra-dnscache
+            zimbra-snmp
+            zimbra-store
+            zimbra-apache
+            zimbra-spell
+            zimbra-memcached
+            zimbra-proxy
+
+        The system will be modified.  Continue? [N] Y
+
+        Removing /opt/zimbra
+        Removing zimbra crontab entry...done.
+        Cleaning up zimbra init scripts...done.
+        Cleaning up /etc/ld.so.conf...done.
+        Cleaning up /etc/security/limits.conf...done.
+
+        Finished removing Zimbra Collaboration Server.
+
+        Installing packages
+            zimbra-core......zimbra-core_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-ldap......zimbra-ldap_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-logger......zimbra-logger_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-mta......zimbra-mta_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-dnscache......zimbra-dnscache_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-snmp......zimbra-snmp_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-store......zimbra-store_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-apache......zimbra-apache_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-spell......zimbra-spell_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-memcached......zimbra-memcached_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+            zimbra-proxy......zimbra-proxy_8.6.0.GA.1153.UBUNTU14.64_amd64.deb...done
+        Operations logged to /tmp/zmsetup01182016-171336.log
+        Installing LDAP configuration database...done.
+        Setting defaults...
+
+        [...]
+
+Aceptamos todos los paquetes que nos sugiere que instalemos. Nos avisa que el sistema va a ser modificado y comienza con la instalación de los mismos. Hasta que nos aparece lo siguiente:
+
+    [...]
+
+    DNS ERROR resolving MX for mail.irontec.com
+    It is suggested that the domain name have an MX record configured in DNS
+    Change domain name? \[Yes\]
+    Create domain: \[mail.irontec.com\] irontec.com
+            MX: mail.irontec.com (123.1.2.3)
+
+            Interface: 123.1.2.3
+            Interface: 127.0.0.1
+            Interface: ::1
+    done.
+
+    [...]
+
+Dado el hostname del servidor, el instalador de Zimbra nos intenta configurar como dominio principal dicho hostname, mientras que lo que tenemos que hacer es modificar el «Domain name» en la instalación tal como podéis ver en este apartado anterior para que sea simplemente «irontec.com». Realiza la comprobación DNS contra nuetstro DNS de pruebas y sigue…
+
+    [...]
+
+    Checking for port conflicts
+    Main menu
+
+       1) Common Configuration:
+       2) zimbra-ldap:                             Enabled
+       3) zimbra-logger:                           Enabled
+       4) zimbra-mta:                              Enabled
+       5) zimbra-dnscache:                         Enabled
+       6) zimbra-snmp:                             Enabled
+       7) zimbra-store:                            Enabled
+            +Create Admin User:                    yes
+            +Admin user to create:                 admin@irontec.com
+    ******* +Admin Password                        UNSET
+            +Anti-virus quarantine user:           virus-quarantine.26cklotci@irontec.com
+            +Enable automated spam training:       yes
+            +Spam training user:                   spam.2wieouplob@irontec.com
+            +Non-spam(Ham) training user:          ham.wblgfqoxzf@irontec.com
+            +SMTP host:                            mail.irontec.com
+            +Web server HTTP port:                 8080
+            +Web server HTTPS port:                8443
+            +Web server mode:                      https
+            +IMAP server port:                     7143
+            +IMAP server SSL port:                 7993
+            +POP server port:                      7110
+            +POP server SSL port:                  7995
+            +Use spell check server:               yes
+            +Spell server URL:                     http://mail.irontec.com:7780/aspell.php
+            +Enable version update checks:         TRUE
+            +Enable version update notifications:  TRUE
+            +Version update notification email:    admin@irontec.com
+            +Version update source email:          admin@irontec.com
+            +Install mailstore (service webapp):   yes
+            +Install UI (zimbra,zimbraAdmin webapps): yes
+
+       8) zimbra-spell:                            Enabled
+       9) zimbra-proxy:                            Enabled
+      10)  Default Class of Service Configuration:
+       s) Save config to file
+       x) Expand menu
+       q) Quit
+
+    Address unconfigured (\*\*) items  (? - help)
+    [...]
+
+El instalador comprueba si hay conflicto de puertos, y por último nos muestra el menú del instalador por si queremos realizar alguna modificación de la configuración por defecto. Nosotros lo único que vamos a hacer es configurar la contraseña del usuario «admin», para ello primero entramos en el menú **7** y posteriormente al **4:**
+
+    [...]
+    Password for admin@irontec.com (min 6 characters): [JZLSKGwjM] mipassword
+    [...]
+
+Volvemos al menú principal escribiendo «**r**» y pulsando intro, y posteriormente aplicamos los cambios:
+
+    [...]
+    Main menu
+
+       1) Common Configuration:                                                  
+       2) zimbra-ldap:                             Enabled                       
+       3) zimbra-logger:                           Enabled                       
+       4) zimbra-mta:                              Enabled                       
+       5) zimbra-dnscache:                         Enabled                       
+       6) zimbra-snmp:                             Enabled                       
+       7) zimbra-store:                            Enabled                       
+       8) zimbra-spell:                            Enabled                       
+       9) zimbra-proxy:                            Enabled                       
+      10) Default Class of Service Configuration:                                
+       s) Save config to file                                                    
+       x) Expand menu                                                            
+       q) Quit                                    
+
+    \*\*\* CONFIGURATION COMPLETE - press 'a' to apply
+    Select from menu, or press 'a' to apply config (? - help) a
+    Save configuration data to a file? \[Yes\] 
+    Save config in file: \[/opt/zimbra/config.27371\]
+    The system will be modified - continue? \[No\] Yes
+    Operations logged to /tmp/zmsetup01182016-171336.log
+    Setting local config values...
+
+    [...]
+
+    Finished installing common zimlets.
+    Restarting mailboxd...done.
+    Creating galsync account for default domain...done.
+
+    You have the option of notifying Zimbra of your installation.
+    This helps us to track the uptake of the Zimbra Collaboration Server.
+    The only information that will be transmitted is:
+            The VERSION of zcs installed (8.6.0\_GA\_1153\_UBUNTU14\_64)
+            The ADMIN EMAIL ADDRESS created (admin@irontec.com)
+
+    Notify Zimbra of your installation? \[Yes\] No
+    Notification skipped
+    Setting up zimbra crontab...done.
+
+
+    Moving /tmp/zmsetup01182016-171336.log to /opt/zimbra/log
+
+La instalación ha terminado correctamente, vemos que mueve el log de la instalación a **/opt/zimbra/log** y a partir de aquí ya podremos ir a la configuración de nuestro servidor zimbra desde un navegador web. Para ello, abrimos en nuestro navegador [https://IP:7071](https://ip:7071/) donde IP es la IP del servidor y ahí introducimos los credenciales «admin» y la contraseña que hemos puesto.
+
+![zimbra](/assets/images/zimbra-admin1.png){: .w-50 }
+
+Todavía nos faltan muchos pasos para **dejar nuestro Zimbra bien configurado**, pero con esto ya podemos empezar a familiarizarnos con él y ver las distintas opciones que tiene, como **crear cuentas de correo**, **listas de correo**, recursos, investigar los logs…
+
+¡Sigue leyendo para saber [cómo configurar un sistema de correo profesional con Zimbra]({% post_url 2016-02-09-zimbra-2%})
