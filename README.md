@@ -1,39 +1,11 @@
-# Chirpy Starter
+# Old blog posts
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Estos son los posts que escribí originalmente en el blog de Irontec. Como está abandonado y no sé si lo terminarán quitando, me he hecho un backup de mis posts para tenerlos a modo de histórico.
 
-A minimal, ready-to-use template for creating a blog with the [**Chirpy**][chirpy] Jekyll theme. Get up and running in minutes with all critical files pre-configured.
+Los posts los he convertido a formato Markdown para así poder tenerlo en modo estático. Cada post está separado en el directorio *_posts*. Las imágenes están en el directorio *assets/libs*.
 
-## Why This Starter Exists
+## Cómo funciona el repositorio
 
-When installing Chirpy through [RubyGems.org][gem], Jekyll can only read a subset of theme files (`_data`, `_layouts`, `_includes`, `_sass`, `assets`) and limited `_config.yml` options from the gem. As a result, users cannot enjoy the full out-of-the-box experience that Chirpy offers.
+Para el sistema de blog estático he usado [Jekyll](https://jekyllrb.com/), que está creado en Ruby. Como tema he usado [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/), diréctamente usando la plantilla de su repositorio.
 
-To unlock all features, the following files must be present in your Jekyll site:
-
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
-```
-
-This starter bundles those files from the latest **Chirpy** release along with a [CD][CD] workflow, so you can start writing immediately.
-
-## Usage
-
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
-
-## Contributing
-
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
-
-## License
-
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+Para generar la web hay un Github-Action en el directorio *.github/workflows*, que genera la web en modo estático y lo sube a Github-Pages en la URL: [https://yuki.github.io/old-blog-posts/](https://yuki.github.io/old-blog-posts/).
